@@ -12,6 +12,10 @@ if(!Array.prototype.myForEach){
     }
 }
 let num = [1,2,3,4,5,6,7,8,9]
+
+
+
+
 num.myForEach((num,  i  )=> "value " + num + " index is " + i )
 
 //polyfill of map 
@@ -33,3 +37,21 @@ if (!Array.prototype.myMap) {
 
 const newArray = num.myMap(v => v)
 console.log(newArray);
+
+// polyfill of filter
+
+if(!Array.prototype.myFilter){
+     Array.prototype.myFilter = function(callBack) {
+        let value = []
+
+        for(let i =0 ;  i < this.length ; i++){
+            if (callBack(this[i])) {
+                value.push(this[i])
+            }
+        }
+
+        return value
+     }
+}
+let even = num.myFilter(n => n % 3 == 0)
+console.log(even);
