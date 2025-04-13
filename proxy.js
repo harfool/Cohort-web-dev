@@ -32,9 +32,24 @@ function negativeIndex(arr){
         }
 
         return target[prop]
+       } ,
+
+    // write set for set value on negative indexs
+     set(target,prop ,val){
+     let Index = Number(prop)
+     if (Index < 0) {
+        target[target.length + Index] = val
+     }
+     else{
+        target[prop] = val
+        return true
+     }
        }
     })
 }
  let negativeIndexProxy =  negativeIndex(arr)
  console.log(negativeIndexProxy[-1]);
+ negativeIndexProxy[-2] = 9999
+ console.log(negativeIndexProxy);
+ console.log(arr);
  
