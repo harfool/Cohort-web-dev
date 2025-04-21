@@ -55,3 +55,5 @@ if(!Array.prototype.myFilter){
 }
 let even = num.myFilter(n => n % 3 == 0)
 console.log(even);
+
+//polyfill of Promies

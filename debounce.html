@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Example</title>
+</head>
+<body>
+    section id="app">
+        <h1>Debounce Example</h1>
+        <input type="text" id="inputField" placeholder="Type something...">
+        <p id="output"></p>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputField = document.getElementById('inputField');
+        const output = document.getElementById('output');
+
+        // Debounce function
+        function debounce(func, delay) {
+            let timeoutId;
+            return function(...args) {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                }, delay);
+            };
+        }
+
+        // Function to update output
+        function updateOutput() {
+            output.textContent = inputField.value;
+        }
+
+        // Create a debounced version of the updateOutput function
+        const debouncedUpdateOutput = debounce(updateOutput, 900);
+
+        // Attach the debounced function to the input event
+        inputField.addEventListener('input', debouncedUpdateOutput);
+    });
+</script></body>
+</html>
