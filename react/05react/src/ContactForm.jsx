@@ -7,7 +7,7 @@ function ContactForm() {
     useContactForm();
 
     const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({...form, [e.target.name]: e.target.value})  // e.target.name reffers to   name="name" , name="email" ,name="message"
     }
 
     const handleSubmit = (e) => {
