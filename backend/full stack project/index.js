@@ -1,10 +1,15 @@
 import express from 'express'
 import cors from "cors"
 import dotenv from "dotenv"
+import { MongoConnection } from './utils/db.js'
 dotenv.config()
 
 
 const app = express()
+
+// mongoDB connection
+MongoConnection()
+
 
 app.use(cors({
     origin : "http://localhost:3000/",
@@ -13,7 +18,6 @@ app.use(cors({
     allowedHeaders : ["Content-Type" , "Authorization"]
 
 }))
-
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
