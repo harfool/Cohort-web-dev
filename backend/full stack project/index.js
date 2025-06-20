@@ -4,12 +4,12 @@ import dotenv from "dotenv"
 import { MongoConnection } from './utils/db.js'
 dotenv.config()
 
-
+// import routes
+import userRoutes from "./routes/user.routes.js"
 const app = express()
 
 // mongoDB connection
 MongoConnection()
-
 
 app.use(cors({
     origin : "http://localhost:3000/",
@@ -32,8 +32,10 @@ app.get("/harfool" , (req , res)=>{
 
 app.get("/pooja" , (req , res)=>{
  res.send("hlo pooja")
-}
-)
+})
+
+//  user routes
+app.use("/api/v1/users" , userRoutes)
 
 app.listen(PORT , ()=>{
     console.log(`server running on port ${PORT}`)
