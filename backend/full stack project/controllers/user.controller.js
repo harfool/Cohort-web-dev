@@ -222,7 +222,7 @@ const resetPassword = async (req, res) => {
 
 // save password
 
-// send response 
+// send RESPONSE 
 
 };
 
