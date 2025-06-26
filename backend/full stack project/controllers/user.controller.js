@@ -4,6 +4,8 @@ import crypto from "crypto";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken"; 
 const registerUser = async (req, res) => {
+  //get data {email , password , email
+  // } from req.body
   const { userName, email, password } = req.body;
 
   // validation
@@ -14,7 +16,7 @@ const registerUser = async (req, res) => {
     });
   }
 
-  try {
+  try { 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {

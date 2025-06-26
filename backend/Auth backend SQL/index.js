@@ -2,7 +2,7 @@ import express, { urlencoded } from "express"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import cors from "cors"
-import userRoutes from "./routes/auth.routes"
+import userRoutes from "./routes/auth.routes.js"
 dotenv.config()
 
 const Port = process.env.PORT || 3000
@@ -21,9 +21,8 @@ app.use(cors({
     allowedHeaders : ["Content-Type" , "Authorization"]
 }))
 
-// routes 
-
 app.use("/api/v1/users" , userRoutes)
+
 
 app.listen(Port , ()=>{
     console.log(`Server running on Port :  ${Port}`)
